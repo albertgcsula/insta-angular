@@ -2,6 +2,8 @@
     <h3>Search Results</h3>
     <p>Results of search for: {{searchterm}}</p>
 
+    <div class="alert alert-danger" style="display:none;"></div>
+
     <div class="insta-user" ng-repeat="user in userResults">
     	<a href="http://instagram.com/{{user.username}}" target="_blank"><img src="{{user.profile_picture}}" class="img-responsive" /></a>
     	<a href="http://instagram.com/{{user.username}}" target="_blank">username: {{user.username}}</a>

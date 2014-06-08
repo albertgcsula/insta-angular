@@ -3,14 +3,18 @@
 /* Controllers */
 
 angular.module('myApp.controllers', [])
-  .controller('SearchController', ['$rootScope', '$scope', 'instagram', function($rootScope, $scope, instagram) {
+  .controller('SearchController', ['$rootScope', '$scope', 'instagram', '$location', function($rootScope, $scope, instagram) {
 
       $scope.submit = function() {
           var hasError = false;
           var formSubmitted = false;
           var $fieldsToValidate = $("#search-form .has-validator");
           // instagram url to be contructed by input, default is popular
-          var instagramUrl = 'https://api.instagram.com/v1/media/popular?client_id=599289ce136242f98cb101527d18360d&callback=JSON_CALLBACK';
+          var instagramUrl = 'https://api.instagram.com/v1/media/popular?client_id='+ /* YOUR_CLIENTID */ +'&callback=JSON_CALLBACK';
+          // make sure results view is shown
+          $location.path('results');
+          // hide keyboard on mobile
+          $('input#submit').blur();
 
           // prevent double submits before page load finishes
           if (formSubmitted) {
