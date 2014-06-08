@@ -37,6 +37,22 @@ body {
   font-size: 18px;
 }
 
+@media (min-width: 350px) {
+  /*
+  * Footer
+  */
+
+  footer {
+    background-color: #d3d3d3 ;
+    bottom: 0;
+    padding: 20px;
+    position: relative;
+    width: 100%;
+
+  }
+
+}
+
 @media (min-width: 768px) {
   .sidebar {
     position: fixed;
@@ -50,6 +66,20 @@ body {
     background-color: #f5f5f5;
     border-right: 1px solid #eee;
   }
+
+  .main {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+
+  footer {
+    background-color: #d3d3d3 ;
+    bottom: 0;
+    padding: 20px;
+    position: fixed;
+    width: 100%;
+
+ }
 }
 
 /* Sidebar navigation */
@@ -67,21 +97,15 @@ body {
   background-color: #428bca;
 }
 
-
 /*
  * Main content
  */
 
 .main {
+  min-height: 400px;
   padding: 20px 20px 60px 20px;
 }
 
-@media (min-width: 768px) {
-  .main {
-    padding-right: 40px;
-    padding-left: 40px;
-  }
-}
 .main .page-header {
   margin-top: 0;
 }
@@ -98,16 +122,3 @@ body {
   display: block;
   padding: 5px 0;
 }
-
-/*
- * Footer
- */
-
- footer {
-  background-color: #d3d3d3 ;
-  bottom: 0;
-  padding: 20px;
-  position: fixed;
-  width: 100%;
-
- }

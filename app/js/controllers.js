@@ -13,8 +13,6 @@ angular.module('myApp.controllers', [])
           var instagramUrl = 'https://api.instagram.com/v1/media/popular?client_id='+ /* YOUR_CLIENTID */ +'&callback=JSON_CALLBACK';
           // make sure results view is shown
           $location.path('results');
-          // hide keyboard on mobile
-          $('input#submit').blur();
 
           // prevent double submits before page load finishes
           if (formSubmitted) {
@@ -83,6 +81,8 @@ angular.module('myApp.controllers', [])
 
           if (!hasError) {
               $("#sidebar-search .alert").html('').hide();
+              // hide keyboard on mobile
+              $('input#submit').blur();
               formSubmitted = true;
               return true;
           } else {
