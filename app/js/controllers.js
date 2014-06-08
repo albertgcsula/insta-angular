@@ -3,14 +3,14 @@
 /* Controllers */
 
 angular.module('myApp.controllers', [])
-  .controller('SearchController', ['$rootScope', '$scope', 'instagram', '$location', function($rootScope, $scope, instagram) {
+  .controller('SearchController', ['$rootScope', '$scope', 'instagram','$location', function($rootScope, $scope, instagram, $location) {
 
-      $scope.submit = function() {
+      $scope.getResults = function() {
           var hasError = false;
           var formSubmitted = false;
           var $fieldsToValidate = $("#search-form .has-validator");
           // instagram url to be contructed by input, default is popular
-          var instagramUrl = 'https://api.instagram.com/v1/media/popular?client_id='+ /* YOUR_CLIENTID */ +'&callback=JSON_CALLBACK';
+          var instagramUrl = 'https://api.instagram.com/v1/media/popular?client_id=599289ce136242f98cb101527d18360d&callback=JSON_CALLBACK';
           // make sure results view is shown
           $location.path('results');
 
@@ -27,7 +27,7 @@ angular.module('myApp.controllers', [])
               // run search for all instagram images with hastag
               $rootScope.searchterm = 'username '+$scope.username;
 
-              instagramUrl = 'https://api.instagram.com/v1/users/search?q=' + $scope.username + '&client_id='+ /* YOUR_CLIENTID */ +'&callback=JSON_CALLBACK';
+              instagramUrl = 'https://api.instagram.com/v1/users/search?q=' + $scope.username + '&client_id=599289ce136242f98cb101527d18360d&callback=JSON_CALLBACK';
 
               $rootScope.userResults = [];
 
@@ -38,17 +38,17 @@ angular.module('myApp.controllers', [])
               });
 
               // clear input text
-              $scope.username = '';
+              $scope.clearInput();
               //clear results
               $rootScope.userResults = [];
-              $rootScope.hashtagResults = [];
+              $rootScope.hashtagResults = []
 
           }
           if(!$scope.username && $scope.hashtag) {
               // run search for instagram hashtag
               $rootScope.searchterm = '#'+$scope.hashtag;
 
-              instagramUrl = 'https://api.instagram.com/v1/tags/' + $scope.hashtag + '/media/recent?client_id='+ /* YOUR_CLIENTID */ +'&callback=JSON_CALLBACK';
+              instagramUrl = 'https://api.instagram.com/v1/tags/' + $scope.hashtag + '/media/recent?client_id=599289ce136242f98cb101527d18360d&callback=JSON_CALLBACK';
               
               $rootScope.hashtagResults = [];
 
@@ -58,10 +58,10 @@ angular.module('myApp.controllers', [])
               });
 
               // clear input text
-              $scope.hashtag = '';
-              // clear results
-              $rootScope.hashtagResults = [];
+              $scope.clearInput();
+              //clear results
               $rootScope.userResults = [];
+              $rootScope.hashtagResults = []
 
               /* what is called from the service
               $http.jsonp(instagramUrl).
@@ -90,6 +90,19 @@ angular.module('myApp.controllers', [])
              hasError = false;
              return false;
           }
+      };
 
-    };
+      $scope.clearResults = function(){
+        //clear results
+        $rootScope.userResults = [];
+        $rootScope.hashtagResults = []
+        $rootScope.searchterm = '';
+      };
+
+      $scope.clearInput = function(){
+        // clear input text
+        $scope.username = '';
+        $scope.hashtag = '';
+      };
+
   }]);

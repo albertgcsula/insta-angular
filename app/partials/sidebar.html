@@ -16,7 +16,8 @@
                 <label class="sr-only" for="hashtag">Search Hashtag</label>
                 <input type="text" ng-model="hashtag" class="form-control has-validator" id="hashtag" placeholder="Search Hashtag" />
             </div>
-            <button type="submit" id="submit" class="btn btn-primary">Search</button>
+            <button id="submit" ng-click="getResults()" class="btn btn-primary">Search</button>
+            <button id="clear" ng-click="clearResults()" class="btn btn-primary">Clear Results</button>
         </form>
     </div> 
 </div>
