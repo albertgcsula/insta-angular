@@ -8,4 +8,4 @@ Tools:
 - <a href="http://getbootstrap.com/" target="_blank">Bootstrap</a>
 - <a href="http://jquery.com/" target="_blank">jQuery</a>
 
-View it in action <a href="https://github.com/albertgcsula/insta-angular" target="blank">here</a>.
+View it in action <a href="http://www.albertgu.com/projects/insta-angular/app/index.html#/" target="blank">here</a>.
